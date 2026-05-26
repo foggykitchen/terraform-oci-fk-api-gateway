@@ -27,7 +27,7 @@ output "route_endpoints" {
   description = "Map of route name to full public endpoint."
   value = {
     for route in var.routes :
-    route.name => "${oci_apigateway_deployment.this.endpoint}${local.normalized_path_prefix}${route.path}"
+    route.name => "${oci_apigateway_deployment.this.endpoint}${route.path}"
   }
 }
 
@@ -38,7 +38,7 @@ output "routes" {
     route.name => {
       path     = route.path
       methods  = route.methods
-      endpoint = "${oci_apigateway_deployment.this.endpoint}${local.normalized_path_prefix}${route.path}"
+      endpoint = "${oci_apigateway_deployment.this.endpoint}${route.path}"
       backend  = route.backend
     }
   }

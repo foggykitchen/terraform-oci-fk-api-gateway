@@ -1,7 +1,6 @@
 locals {
   gateway_display_name    = coalesce(var.gateway_display_name, var.name)
   deployment_display_name = coalesce(var.deployment_display_name, "${var.name}-deployment")
-  normalized_path_prefix  = trimsuffix(var.path_prefix, "/")
 }
 
 resource "oci_apigateway_gateway" "this" {
