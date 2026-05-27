@@ -4,3 +4,4 @@ user_ocid        = "ocid1.user.oc1..<your_user_ocid>"
 fingerprint      = "<your_api_key_fingerprint>"
 private_key_path = "~/.oci/oci_api_key.pem"
 region           = "eu-frankfurt-1"
+instance_count   = 2
