@@ -12,6 +12,16 @@ This makes the example fully self-contained and avoids relying on an external `b
 
 ---
 
+## Architecture Overview
+
+![](01_public_http_backend_architecture.png)
+Figure 1. High-level architecture for the example.
+Traffic enters through a public OCI API Gateway, is forwarded to a private OCI Load Balancer, and then reaches private compute backends in the application subnet.
+
+The diagram is conceptual. The default deployment uses `instance_count = 2`, but the backend layer can be scaled to more instances if needed.
+
+---
+
 ## What This Example Shows
 
 - Public OCI API Gateway endpoint
@@ -86,27 +96,27 @@ content-type: text/html
 The screenshots below illustrate the expected OCI Console state after a successful deployment and smoke test.
 
 ![](01_public_http_backend_oci_console1.png)
-Figure 1. API Gateway details for `fk-http-gateway`.
+Figure 2. API Gateway details for `fk-http-gateway`.
 This confirms that the gateway is public and attached to the expected subnet `fk-apigw-public-subnet`.
 
 ![](01_public_http_backend_oci_console2.png)
-Figure 2. API deployment details for `fk-http-gateway-deployment`.
+Figure 3. API deployment details for `fk-http-gateway-deployment`.
 The deployment exposes the `/v1` path prefix and shows API request and response metrics after validation traffic.
 
 ![](01_public_http_backend_oci_console3.png)
-Figure 3. Route configuration for `/demo` in the API deployment.
+Figure 4. Route configuration for `/demo` in the API deployment.
 The route uses an `HTTP` backend and points to the private load balancer IP address `10.80.20.209`.
 
 ![](01_public_http_backend_oci_console4.png)
-Figure 4. VCN subnet layout for the example.
+Figure 5. VCN subnet layout for the example.
 The topology contains one public subnet for API Gateway and two private subnets for the load balancer and compute backends.
 
 ![](01_public_http_backend_oci_console5.png)
-Figure 5. Private load balancer details and overall health.
+Figure 6. Private load balancer details and overall health.
 The load balancer is private, attached to `fk-apigw-lb-private-subnet`, and reports backend set health as `OK`.
 
 ![](01_public_http_backend_oci_console6.png)
-Figure 6. Compute instances used as backend servers.
+Figure 7. Compute instances used as backend servers.
 Two running instances form the active backend pool. The terminated instances visible in the screenshot come from an earlier refactor test cycle and are not part of the final desired steady state.
 
 ---
