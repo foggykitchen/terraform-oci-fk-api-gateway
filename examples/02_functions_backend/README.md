@@ -125,7 +125,6 @@ The VCN view confirms the intended split between the public API Gateway subnet a
 - It requires valid `ocir_user_name` and `ocir_user_password` values.
 - The first function creates the shared Functions Application.
 - The second function joins that existing application.
-- The Functions integration currently tracks the `update-2026` branch of `terraform-oci-fk-function`, because the 2025 `master` branch still depends on legacy `fn build` workflow behavior.
 
 ---
 

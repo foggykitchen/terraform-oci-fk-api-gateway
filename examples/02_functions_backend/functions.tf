@@ -1,5 +1,5 @@
 module "oci_fk_custom_function_1" {
-  source = "git::https://github.com/foggykitchen/terraform-oci-fk-function.git?ref=update-2026"
+  source = "git::https://github.com/foggykitchen/terraform-oci-fk-function.git"
 
   tenancy_ocid             = var.tenancy_ocid
   region                   = var.region
@@ -23,7 +23,7 @@ module "oci_fk_custom_function_1" {
 }
 
 module "oci_fk_custom_function_2" {
-  source = "git::https://github.com/foggykitchen/terraform-oci-fk-function.git?ref=update-2026"
+  source = "git::https://github.com/foggykitchen/terraform-oci-fk-function.git"
 
   tenancy_ocid             = var.tenancy_ocid
   region                   = var.region
