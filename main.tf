@@ -21,6 +21,18 @@ resource "oci_apigateway_deployment" "this" {
   freeform_tags  = var.freeform_tags
 
   specification {
+    dynamic "request_policies" {
+      for_each = var.custom_authentication == null ? [] : [var.custom_authentication]
+
+      content {
+        authentication {
+          type         = "CUSTOM_AUTHENTICATION"
+          function_id  = request_policies.value.function_id
+          token_header = request_policies.value.token_header
+        }
+      }
+    }
+
     dynamic "routes" {
       for_each = var.routes
 

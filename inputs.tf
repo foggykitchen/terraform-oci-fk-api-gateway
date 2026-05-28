@@ -111,3 +111,12 @@ variable "routes" {
     error_message = "Routes using HTTP_BACKEND must define backend.url."
   }
 }
+
+variable "custom_authentication" {
+  description = "Optional custom authentication policy applied at the deployment level."
+  type = object({
+    function_id  = string
+    token_header = string
+  })
+  default = null
+}
