@@ -8,7 +8,7 @@ data "oci_identity_region_subscriptions" "home_region_subscriptions" {
 }
 
 module "fk_policy_apigateway_functions" {
-  source = "git::https://github.com/foggykitchen/terraform-oci-fk-policy.git?ref=v0.1.0"
+  source = "git::https://github.com/foggykitchen/terraform-oci-fk-policy.git?ref=v0.2.0" # TODO: tag not yet released
 
   providers = {
     oci = oci.homeregion
